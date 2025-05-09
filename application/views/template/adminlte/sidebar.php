@@ -51,12 +51,26 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?= site_url('produk') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= site_url('users') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Users</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="<?= site_url('transaksi') ?>" class="nav-link">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Transaksi
+                        </p>
+                    </a>
                 </li>
             </ul>
         </nav>

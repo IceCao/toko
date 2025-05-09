@@ -35,11 +35,47 @@
 <script>
   $(function () {
     $('.delete-me').on('click', function (e) {
-        e.preventDefault();
-        var form = $(this).closest('form');
-        if (confirm('Apakah anda yakin menghapus data ini?')) {
-          form.submit();
-        }
+      e.preventDefault();
+      var form = $(this).closest('form');
+      if (confirm('Apakah anda yakin menghapus data ini?')) {
+        form.submit();
+      }
+    });
+
+    const fileInput = document.getElementById('file_foto');
+    const filePathInput = document.getElementById('file_path_foto');
+    const attUrlSpan = document.getElementById('att_url_foto');
+    const windowUrlBtn = document.getElementById('window_url_foto');
+
+    function getUniqueTimestamp() {
+      const now = new Date();
+      return now.getFullYear().toString() +
+        String(now.getMonth() + 1).padStart(2, '0') +
+        String(now.getDate()).padStart(2, '0') +
+        String(now.getHours()).padStart(2, '0') +
+        String(now.getMinutes()).padStart(2, '0') +
+        String(now.getSeconds()).padStart(2, '0');
+    }
+
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const uniqueName = getUniqueTimestamp() + '.' + file.name.split('.').pop();
+        filePathInput.value = URL.createObjectURL(file);
+        attUrlSpan.textContent = uniqueName;
+        windowUrlBtn.style.display = 'inline-block';
+      } else {
+        filePathInput.value = '';
+        attUrlSpan.textContent = '';
+        windowUrlBtn.style.display = 'none';
+      }
+    });
+
+    windowUrlBtn.addEventListener('click', function () {
+      const url = filePathInput.value;
+      if (url) {
+        window.open(url, '_blank');
+      }
     });
   });
 </script>

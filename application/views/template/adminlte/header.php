@@ -17,6 +17,37 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.min.css">
   <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url() ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <style>
+    label.uploader {
+      display: block;
+      width: 60vw;
+      max-width: 300px;
+      background-color: slateblue;
+      border-radius: 2px;
+      font-size: 1em;
+      line-height: 2.5em;
+      text-align: center;
+    }
+
+    label.uploader:hover {
+      background-color: cornflowerblue;
+    }
+
+    label.uploader:active {
+      background-color: mediumaquamarine;
+    }
+
+    input.inputFile {
+      border: 0;
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px; 
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+  </style>
 </head>
 <div class="wrapper">
   <div class="preloader flex-column justify-content-center align-items-center">
