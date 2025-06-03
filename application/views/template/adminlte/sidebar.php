@@ -10,7 +10,7 @@
                 <img src="<?php echo base_url() ?>assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?php echo $this->session->userdata('nama') ?></a>
             </div>
         </div>
 
@@ -45,15 +45,27 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="<?= site_url('gudang') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gudang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= site_url('kategori') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kategori</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= site_url('produk') ?>" class="nav-link">
+                            <a href="<?= site_url('subkategori') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Produk</p>
+                                <p>Sub kategori</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url('hargajual') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Setting harga jual</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -64,13 +76,68 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item menu-open">
-                    <a href="<?= site_url('transaksi') ?>" class="nav-link">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>
-                            Transaksi
+                            Barang masuk
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= site_url('pembelian') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pembelian</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-file-export"></i>
+                        <p>
+                            Barang keluar
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= site_url('penjualan') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Penjualan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url('pengembalian') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Return</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-receipt"></i>
+                        <p>
+                            Report
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= site_url('laba') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Laba</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url('barang') ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>gudang</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

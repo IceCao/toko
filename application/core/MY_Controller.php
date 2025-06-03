@@ -6,6 +6,10 @@ class MY_Controller extends CI_Controller
   {
     if (!$this->session->userdata('username')) {
       redirect('auth/login');
+    }else{
+      if($this->session->userdata('role') == 'user'){
+        redirect('home');
+      }
     }
   }
 }

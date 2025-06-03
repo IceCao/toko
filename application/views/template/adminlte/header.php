@@ -47,7 +47,37 @@
       position: absolute;
       width: 1px;
     }
+
+    .read-datepicker input {
+      pointer-events: none;
+      background-color: #EBEBE4;
+    }
+
+    .large-checkbox {
+        width: 50px;
+        height: 30px;
+    }
   </style>
+  <script>
+    function lookAttachment(code) {
+      window.open("<?php echo base_url('assets/uploads/') ?>" + code, 'newwindow', 'height=200;width=200;');
+    }
+    function formatRupiah(angka, prefix = 'Rp') {
+      const numberString = angka.toString().replace(/[^,\d]/g, '');
+      const split = numberString.split(',');
+      let sisa = split[0].length % 3;
+      let rupiah = split[0].substr(0, sisa);
+      const ribuan = split[0].substr(sisa).match(/\d{3}/g);
+
+      if (ribuan) {
+          const separator = sisa ? '.' : '';
+          rupiah += separator + ribuan.join('.');
+      }
+
+      rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
+      return prefix ? prefix + ' ' + rupiah : rupiah;
+    }
+  </script>
 </head>
 <div class="wrapper">
   <div class="preloader flex-column justify-content-center align-items-center">
@@ -60,6 +90,11 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link btn btn-danger" href="<?= site_url('auth/logout') ?>">
+          <i class="fas fa-power-off" style="color: #fafafa;"></i>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>

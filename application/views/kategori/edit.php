@@ -25,7 +25,7 @@
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <?php echo form_label("Nama Kategori", 'nama_kategori', array('class' => 'control-label')); ?>
                                         <input id='nama_kategori' class='form-control' type='text' name='nama_kategori' value="<?php echo set_value('nama_kategori', isset($kategori->nama_kategori) ? $kategori->nama_kategori : ''); ?>" required>

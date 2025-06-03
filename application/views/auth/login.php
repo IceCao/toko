@@ -36,28 +36,28 @@
     }
 </style>
 <div class="login-container">
-    <h3 class="text-center mb-4">Login</h3>
-    <form action="<?= site_url('auth/cekLogin'); ?>" method="post">
-        <?php if ($this->session->flashdata('success')): ?>
-            <div class="alert alert-success" role="alert">
-                <?= $this->session->flashdata('success'); ?>
-            </div>
-        <?php elseif ($this->session->flashdata('error')): ?>
-            <div class="alert alert-danger" role="alert">
-                <?= $this->session->flashdata('error'); ?>
-            </div>
-        <?php endif; ?>
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+<h3 class="text-center mb-4">Login</h3>
+<form action="<?= site_url('auth/cekLogin'); ?>" method="post">
+    <?php if ($this->session->flashdata('success')): ?>
+        <div class="alert alert-success" role="alert">
+            <?= $this->session->flashdata('success'); ?>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+    <?php elseif ($this->session->flashdata('error')): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $this->session->flashdata('error'); ?>
         </div>
-        <input type="submit" name="login" class="btn btn-primary w-100" value="Login">
-    </form>
-    <p class="text-center mt-3">
-        <a href="<?php echo site_url('auth/daftar') ?>">Belum punya akun? Daftar</a>
-    </p>
+    <?php endif; ?>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <input type="submit" name="login" class="btn btn-primary w-100" value="Login">
+</form>
+<p class="text-center mt-3">
+    <a href="<?php echo site_url('auth/daftar') ?>">Belum punya akun? Daftar</a>
+</p>
 </div>
