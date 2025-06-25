@@ -1,14 +1,14 @@
 <?php echo form_open($this->uri->uri_string(), 'class=""'); ?>
     <div class='box admin-box box-info pt-3'>
         <div class='box-header with-border'>
-            <h3 class='box-title'>Penjualan</h3>
+            <h3 class='box-title'>Pengembalian</h3>
         </div>
         <div class='box-body'>
             <div id="accordion">
                 <div class="card">
                     <div class="card-header alert alert-success" id="headingOne">
                         <h5 class="mb-0">
-                            Data Penjualan
+                            Data Pengembalian
                         </h5>
                     </div>
                     <div id="collapse-1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
@@ -59,14 +59,14 @@
                                     
                                     <div class="card card-primary">
                                         <div class="card-header">
-                                            <h3 class="card-title">Penjualan</h3>
+                                            <h3 class="card-title">Pengembalian</h3>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <input type="hidden" id="total_harga" name="total_harga" value="">
                                                     <div class="table-responsive">
-                                                        <table class="table table-hover form-table" id="list_penjualan_table" style="table-layout:fixed;">
+                                                        <table class="table table-hover form-table" id="list_pengembalian_table" style="table-layout:fixed;">
                                                             <thead>
                                                                 <tr>
                                                                     <th>Aksi</th>
@@ -94,11 +94,11 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <?= form_label('Tanggal jual', 'tgl_jual', array('class' => 'control-label')); ?>
-                                        <div class="input-group date read-datepicker" id="tgl_jual" data-target-input="nearest" readonly>
-                                            <input type="text" name="tgl_jual" class="form-control datetimepicker-input" 
-                                                data-target="#tgl_jual" required />
-                                            <div class="input-group-append" data-target="#tgl_jual" data-toggle="datetimepicker">
+                                        <?= form_label('Tanggal pengembalian', 'tgl_return', array('class' => 'control-label')); ?>
+                                        <div class="input-group date read-datepicker" id="tgl_return" data-target-input="nearest" readonly>
+                                            <input type="text" name="tgl_return" class="form-control datetimepicker-input" 
+                                                data-target="#tgl_return" required />
+                                            <div class="input-group-append" data-target="#tgl_return" data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                 
                                 <div class="col-md-12">
                                     <div class="next-wrapper">
-                                        <a href="<?= site_url('penjualan') ?>" class="btn btn-warning">Batal</a>
+                                        <a href="<?= site_url('pengembalian') ?>" class="btn btn-warning">Batal</a>
                                         <button type="submit" name="save" id="simpan" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
 
 <script>
     $(function () {
-        $('#tgl_jual').datetimepicker({
+        $('#tgl_return').datetimepicker({
             format: 'DD-MM-YYYY'
         });
         
@@ -157,7 +157,7 @@
         $("#list_produk_table").DataTable({
             "processing": true,
             "ajax": {
-                "url": "<?php echo base_url('penjualan/get_produk'); ?>",
+                "url": "<?php echo base_url('pengembalian/get_produk'); ?>",
                 "type": "POST"
             },
             "columns": [
@@ -205,7 +205,7 @@
 
         function hitungTotalHarga() {
             var total = 0;
-            $('#list_penjualan_table .total_harga').each(function () {
+            $('#list_pengembalian_table .total_harga').each(function () {
                 var value = parseFloat($(this).val()) || 0;
                 total += value;
             });
@@ -229,9 +229,9 @@
                 return false;
             }
 
-            $.post("<?php echo base_url('penjualan/transfer_data'); ?>", { 'produk[]': checkedIds }, function(data){
+            $.post("<?php echo base_url('pengembalian/transfer_data'); ?>", { 'produk[]': checkedIds }, function(data){
                 swal.close();
-                $('#list_penjualan_table tbody').html('');
+                $('#list_pengembalian_table tbody').html('');
 
                 var html = '';
                 var action = 0;
@@ -269,7 +269,7 @@
                 });
 
                 if(action == 0){
-                    $('#list_penjualan_table').append(html);
+                    $('#list_pengembalian_table').append(html);
                     $('#total_harga').val(data.total_harga);
                     $('#total-harga').html('Total Harga : Rp ' + data.total_harga);
                 } else {
@@ -278,13 +278,13 @@
             },'json');
         });
 
-        $('#list_penjualan_table').on('click', '.hapus-btn', function () {
+        $('#list_pengembalian_table').on('click', '.hapus-btn', function () {
             $(this).closest('tr').remove();
             hitungTotalHarga();
         });
 
         $('#simpan').on('click', function () {
-            if($('#list_penjualan_table > tbody > tr').length < 1){
+            if($('#list_pengembalian_table > tbody > tr').length < 1){
                 Swal.fire("Warning", "Data kosong, mohon pilih data yang tersedia terlebih dahulu", "warning");
                 return false;
             }

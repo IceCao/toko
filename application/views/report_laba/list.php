@@ -4,10 +4,11 @@
             <div class="card-header">
                 <div class="row">
 					<div class="col-sm-10">
-                        <h3 class="card-title">Laba</h3>
+                        <h3 class="card-title">Report laba</h3>
 					</div>
 					<div class="col-sm-2">
                         <a class="btn btn-success float-right" id="print_exc">Excel</a>
+                        <a class="btn btn-primary float-right" id="print_doc">Pdf</a>
 					</div>
 				</div>
             </div>
@@ -93,7 +94,7 @@
     $("#labaList").DataTable({
         "processing": true,
         "ajax": {
-            "url": "<?php echo base_url('laba/get_data/'); ?>" + dates + '/' + dates_to + '/' + kategori + '/' + kategorisub,
+            "url": "<?php echo base_url('report_laba/get_data/'); ?>" + dates + '/' + dates_to + '/' + kategori + '/' + kategorisub,
             "type": "POST"
         },
         "columns": [
@@ -145,7 +146,7 @@
     $('#kategori').on('change', function(){
         kategori = this.value;
         var html = '<option value="000">SEMUA</option>';
-        $.post("<?php echo base_url('laba/get_subkategori/') ?>" + this.value, function (param) {
+        $.post("<?php echo base_url('report_laba/get_subkategori/') ?>" + this.value, function (param) {
             param.forEach(function(val, i){
                 html += '<option value="' + val.id_sub_kategori + '">' + val.sub_kategori + '</option>';
             });
@@ -161,13 +162,12 @@
     function show_list(){
         $('#labaList').DataTable()
             .ajax.url(
-                "<?php echo base_url('laba/get_data/'); ?>" + dates + '/' + dates_to + '/' + kategori + '/' + kategorisub
+                "<?php echo base_url('report_laba/get_data/'); ?>" + dates + '/' + dates_to + '/' + kategori + '/' + kategorisub
             )
         .load(function(json){
             total = json.recordsTotal;
         });
     }
-
     
     $('#print_exc').on('click', function () {
         let filter = btoa(dates + '/' + dates_to + '/' + kategori + '/' + kategorisub).replace(/=/g, '');
@@ -179,7 +179,23 @@
             showConfirmButton: false,
             allowOutsideClick: false,
             didOpen: () => {
-                window.open("<?php echo base_url('laba/print_exc/') ?>" + filter, '_blank');
+                window.open("<?php echo base_url('report_laba/print_exc/') ?>" + filter, '_blank');
+                Swal.close(); // tutup swal
+            }
+        });
+    });
+    
+    $('#print_doc').on('click', function () {
+        let filter = btoa(dates + '/' + dates_to + '/' + kategori + '/' + kategorisub).replace(/=/g, '');
+
+        Swal.fire({
+            title: 'Memproses Data',
+            text: 'Mohon Menunggu',
+            imageUrl: "<?php echo base_url() ?>" + 'assets/images/blue_loading.gif',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                window.open("<?php echo base_url('report_laba/print_doc/') ?>" + filter, '_blank');
                 Swal.close(); // tutup swal
             }
         });

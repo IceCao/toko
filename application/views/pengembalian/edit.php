@@ -1,14 +1,14 @@
 <?php echo form_open($this->uri->uri_string(), 'class=""'); ?>
     <div class='box admin-box box-info pt-3'>
         <div class='box-header with-border'>
-            <h3 class='box-title'>Penjualan</h3>
+            <h3 class='box-title'>Pengembalian</h3>
         </div>
         <div class='box-body'>
             <div id="accordion">
                 <div class="card">
                     <div class="card-header alert alert-success" id="headingOne">
                         <h5 class="mb-0">
-                            Data Penjualan
+                            Data Pengembalian
                         </h5>
                     </div>
                     <div id="collapse-1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
@@ -58,11 +58,11 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <?= form_label('Tanggal jual', 'tgl_jual', array('class' => 'control-label')); ?>
-                                        <div class="input-group date read-datepicker" id="tgl_jual" data-target-input="nearest" readonly>
-                                            <input type="text" name="tgl_jual" class="form-control datetimepicker-input" 
-                                                data-target="#tgl_jual" required value="<?php echo set_value('tgl_jual', isset($penjualan->tgl_jual) ? $penjualan->tgl_jual : ''); ?>"/>
-                                            <div class="input-group-append" data-target="#tgl_jual" data-toggle="datetimepicker">
+                                        <?= form_label('Tanggal jual', 'tgl_return', array('class' => 'control-label')); ?>
+                                        <div class="input-group date read-datepicker" id="tgl_return" data-target-input="nearest" readonly>
+                                            <input type="text" name="tgl_return" class="form-control datetimepicker-input" 
+                                                data-target="#tgl_return" required value="<?php echo set_value('tgl_return', isset($pengembalian->tgl_return) ? $pengembalian->tgl_return : ''); ?>"/>
+                                            <div class="input-group-append" data-target="#tgl_return" data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                 <div class='col-md-12'>
                                     <div class='form-group<?php echo form_error('desc') ? ' error' : ''; ?>'>
                                         <?php echo form_label('Deskripsi', 'desc', array('class' => '')); ?>
-                                        <textarea name="desc" class='form-control'><?php echo set_value('desc', isset($penjualan->desc) ? $penjualan->desc : ''); ?></textarea>
+                                        <textarea name="desc" class='form-control'><?php echo set_value('desc', isset($pengembalian->desc) ? $pengembalian->desc : ''); ?></textarea>
                                         <span class='help-inline'><?php echo form_error('desc'); ?></span>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
 
                                 <div class="col-md-12">
                                     <div class="next-wrapper">
-                                        <a href="<?= site_url('penjualan') ?>" class="btn btn-warning">Batal</a>
+                                        <a href="<?= site_url('pengembalian') ?>" class="btn btn-warning">Batal</a>
                                         <!-- <button type="submit" name="save" class="btn btn-primary">Simpan</button>
                                         <div class="float-right">
                                             <input name='delete' class='btn btn-danger delete-me' value="Hapus" style="width: 90px;" >
@@ -136,7 +136,7 @@
         $("#list_produk_table").DataTable({
             "processing": true,
             "ajax": {
-                "url": "<?php echo base_url('penjualan/get_produk_jual/' . $penjualan->id_penjualan); ?>",
+                "url": "<?php echo base_url('pengembalian/get_produk_jual/' . $pengembalian->id_return); ?>",
                 "type": "POST",
                 "dataSrc": function (json) {
                     let total = 0;

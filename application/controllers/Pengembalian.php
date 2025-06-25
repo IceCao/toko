@@ -57,7 +57,7 @@ class Pengembalian extends MY_Controller
 			$this->session->set_flashdata('error', 'Data gagal dihapus');
 			redirect('pengembalian/edit/' . $id);
 		}
-		$pengembalian = $this->db->get_where('pengembalian', ['id_pengembalian' => $id])->row();
+		$pengembalian = $this->db->get_where('return', ['id_return' => $id])->row();
 		
 		$data['pageTitle'] = 'Edit Pengembalian';
 		$data['pengembalian'] = $pengembalian;
@@ -83,18 +83,18 @@ class Pengembalian extends MY_Controller
 			'desc' => $input_post['desc'],
 			'id_user' => $this->session->userdata('id_user'),
 			'file_code' => $file_code,
-			'tgl_jual' => date("Y-m-d", strtotime($input_post['tgl_jual'])),
+			'tgl_return' => date("Y-m-d", strtotime($input_post['tgl_jual'])),
 		);
 
 		$return = false;
 		if ($type == 'insert') {
-			$this->db->insert('pengembalian', $data);
+			$this->db->insert('return', $data);
 			$id = $this->db->insert_id();
 			if(is_numeric($id)){
 				$this->save_item($id);
 			}
 		} elseif ($type == 'update') {
-			$this->db->update('pengembalian', $data, ['id_pengembalian' => $id]);
+			$this->db->update('return', $data, ['id_return' => $id]);
 			if(is_numeric($id)){
 				$this->save_item($id);
 			}
@@ -118,20 +118,20 @@ class Pengembalian extends MY_Controller
 			for($i = 0; $i < $post['stok'][$key]; $i++){
 				$frist_produk = $this->model_pengembalian->frist_produk($post['id_kategori'][$key], $post['id_sub_kategori'][$key], $post['id_gudang'][$key]);
 				$barang[] = array(
-					'id_pengembalian' => $id,
+					'id_return' => $id,
 					'id_kategori' => $post['id_kategori'][$key],
 					'id_sub_kategori' => $post['id_sub_kategori'][$key],
 					'id_gudang' => $post['id_gudang'][$key],
 					'harga_awal' => $frist_produk->harga_awal,
 					'harga_jual' => $post['harga_jual'][$key],
-					'status' => 'pengembalian',
+					'status' => 'return',
 				);
 
 				$this->db->update('barang_masuk', ['status' => 'keluar', 'harga_jual' => $post['harga_jual'][$key]], ['id_barang_masuk' => $frist_produk->id_barang_masuk]);
 			}
 		}
 		$this->db->insert_batch('barang_keluar', $barang);
-		$this->db->update('pengembalian', ['total_stok' => $total_stok, 'total_harga' => $total_harga], ['id_pengembalian' => $id]);
+		$this->db->update('return', ['total_stok' => $total_stok, 'total_harga' => $total_harga], ['id_return' => $id]);
 	}
 
 	public function get_data()

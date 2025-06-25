@@ -22,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th>Desc</th>
-                                <th>Tgl jual</th>
+                                <th>Tgl return</th>
                                 <th>Total stok</th>
                                 <th>Total harga</th>
                                 <th>Aksi</th>
@@ -47,7 +47,7 @@
         },
         "columns": [
             { "data": "desc" },
-            { "data": "tgl_jual" },
+            { "data": "tgl_return" },
             { "data": "total_stok" },
             { "data": "total_harga" },
             { "data": "id_return" },

@@ -20,11 +20,11 @@ class Auth extends CI_Controller {
 			if ($this->form_validation->run() === TRUE) {
 				$message = array('status' => true, 'message' => 'SELAMAT DATANG DI APLIKASI ....');
 				$this->session->set_flashdata('message', $message);
-				if($this->session->userdata('role') == 'admin'){
+				// if($this->session->userdata('role') == 'admin'){
 					redirect('dashboard', 'refresh');
-				}else{
-					redirect('home', 'refresh');
-				}
+				// }else{
+				// 	redirect('home', 'refresh');
+				// }
 			}
 		}
 
