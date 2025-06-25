@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/toko/';
+// $config['base_url'] = 'http://localhost/toko/';
+$config['base_url'] = 'https://toko-maju-jaya.netlify.app';
 
 /*
 |--------------------------------------------------------------------------
