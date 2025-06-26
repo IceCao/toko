@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/toko/';
-$config['base_url'] = 'https://toko-maju-jaya.netlify.app';
+$config['base_url'] = 'https://toko-maju-jaya.up.railway.app';
 
 /*
 |--------------------------------------------------------------------------
