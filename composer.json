@@ -31,5 +31,11 @@
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",
 		"phpunit/phpunit": "4.* || 5.* || 9.*"
-	}
+	},
+	"build": {
+		"env": {
+			"COMPOSER_ALLOW_SUPERUSER": "1"
+		}
+	},
+	"start": "php -S 0.0.0.0:3000 -t public"
 }
