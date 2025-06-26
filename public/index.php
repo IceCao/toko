@@ -126,7 +126,7 @@ $path = "..";
  * as this file.
  */
 // CI 3 system path:
-$system_path = "{$path}";
+$system_path = "{$path}/system";
 
 /*
  *------------------------------------------------------------------------------
