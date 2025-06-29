@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class SubKategori extends MY_Controller
+class Subkategori extends MY_Controller
 {
 	public function __construct()
 	{

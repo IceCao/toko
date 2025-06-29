@@ -56,7 +56,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <?php echo form_label("Role", 'role', array('class' => 'control-label')); ?>
-                                        <input id='role' class='form-control' type='text' name='role' readonly value="user" readonly required>
+                                        <input id='role' class='form-control' type='text' name='role' readonly value="kasir" readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

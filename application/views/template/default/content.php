@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-        <title>Market Ecommerce</title>
+        <title>Toko maju jaya</title>
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/default/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/default/font-awesome.css">
         <link rel="stylesheet" href="<?= base_url() ?>assets/css/default/templatemo-hexashop.css">
@@ -22,7 +22,7 @@
             </div>
         </div>  
         <?php if($this->uri->uri_string() != 'auth/login') : ?>
-        <header class="header-area header-sticky">
+        <!-- <header class="header-area header-sticky">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -47,13 +47,13 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> -->
         <?php endif; ?>
 
         <?php echo $pageContent ?? 'Konten tidak tersedia.'; ?>
         
         <?php if($this->uri->uri_string() != 'auth/login') : ?>
-        <footer>
+        <!-- <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
         <?php endif; ?>
         
         <script src="<?= base_url() ?>assets/js/default/jquery-2.1.0.min.js"></script>

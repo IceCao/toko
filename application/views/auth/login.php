@@ -58,6 +58,6 @@
     <input type="submit" name="login" class="btn btn-primary w-100" value="Login">
 </form>
 <p class="text-center mt-3">
-    <a href="<?php echo site_url('auth/daftar') ?>">Belum punya akun? Daftar</a>
+    <!-- <a href="<?php echo site_url('auth/daftar') ?>">Belum punya akun? Daftar</a> -->
 </p>
 </div>
